@@ -42,7 +42,33 @@ public class ResultadosExamen {
         System.out.println("Primera Evaluacion Resultados: " + getCalificacionesOriginales());
         System.out.println("Segunda Evaluacion Resultados:" + getCalificacionesRegularizacion());
 
+            Map primerResultado = getCalificacionesOriginales();
+            Map segundoResultado = getCalificacionesRegularizacion();
 
+
+            //Comparacion
+
+
+
+        Map finalScores = new HashMap();
+        getCalificacionesOriginales().forEach((k,v) -> {
+                    if (getCalificacionesRegularizacion().containsKey(k)) {
+                        int value2 = (int) getCalificacionesRegularizacion().get(k);
+                        if (value2 > (int) v) {
+                            finalScores.put(k, value2);
+                        } else {
+                            finalScores.put(k, v);
+                        }
+                    } else {finalScores.put(k, v);}
+                }
+        );
+        finalScores.forEach((k,v) -> System.out.println("Student: "+ k+". Final Score: "+v));
+
+
+        //Otro Intento
+
+
+        //Otros resultados
 
 
         int[] calificaciones1 = new int[]{32, 59, 79, 24, 55, 95, 40, 50, 59, 63};
